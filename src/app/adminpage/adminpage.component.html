@@ -1,0 +1,109 @@
+<div class="center">
+<div class="section-button">
+  <a (click)="scrollToSection('building-stats')">Building Statistics</a>
+</div>
+<div class="section-button">
+  <a   (click)="scrollToSection('type-stats')">Type of Building Statistics</a>
+</div>
+<div class="section-button">
+  <a  (click)="scrollToSection('sold-stats')">Sold Buildings</a>
+</div>
+<div class="section-button">
+  <a (click)="scrollToSection('users')">Users</a>
+</div>
+<div class="section-button">
+  <a (click)="scrollToSection('search-terms')">Search Terms</a>
+</div>
+<div class="section-button">
+  <a (click)="scrollToSection('add-words')">Add Words for Typo Fixer</a>
+</div>
+</div>
+<button class="btn-sign-out" (click)="signOut()">Sign Out</button>
+<div  id="building-stats" class="admin-dashboard">
+  <h2>Building Statistics</h2>
+  <div class="chart-container">
+    <canvas id="myPieChart" width="400" height="400"></canvas>
+  </div>
+  <div class="summary">
+    <div class="summary-item">
+      <h3>Total Buildings</h3>
+      <p>{{ total }}</p>
+    </div>
+    <div class="summary-item">
+      <h3>Most buildings in</h3>
+      <p>{{ mostCommonArea }}</p>
+    </div>
+  </div>
+</div>
+<div id="type-stats" class="admin-dashboard">
+  <h2>type of Building Statistics</h2>
+  <div class="chart-container">
+    <canvas id="myPieChart3" width="400" height="400"></canvas>
+  </div>
+  <div class="summary">
+    <div class="summary-item">
+      <h3>Total Buildings</h3>
+      <p>{{ total }}</p>
+    </div>
+    <div class="summary-item">
+      <h3>Most common type </h3>
+      <p>{{ mostCommonType }}</p>
+    </div>
+  </div>
+</div>
+<div  id="sold-stats" class="admin-dashboard">
+  <h2>Sold Buildings</h2>
+  <div class="chart-container">
+    <canvas id="mybarChart2" width="400" height="400"></canvas>
+  </div>
+  <div class="summary">
+    <div class="summary-item">
+      <h3>Total Buildings Sold</h3>
+      <p>{{ totalsold }}</p>
+    </div>
+    <div class="summary-item">
+      <h3>Most Buildings Sold in</h3>
+      <p>{{ mostCommonsellingArea }}</p>
+    </div>
+  </div>
+</div>
+<div id="users" class="admin-dashboard">
+  <h2>Users</h2>
+  <div class="summary">
+    <div class="summary-item">
+      <h3>Users</h3>
+      <p>{{ numberofuser }}</p>
+    </div>
+  </div>
+</div>
+<div id="search-terms" class="admin-dashboard">
+  <h2>searchterms</h2>
+  <div class="chart-container">
+    <canvas id="myPieChart4" width="400" height="400"></canvas>
+  </div>
+  <div class="summary">
+    <div class="summary-item">
+      <h3>most searched term </h3>
+      <p>{{ mostsearchedterm }}</p>
+    </div>
+  </div>
+</div>
+<div id="add-words" class="admin-dashboard">
+  <h2>add words for the typo fixer in app</h2>
+  <div class="summary">
+    <form (ngSubmit)="addWord()">
+      <div class="summary-item">
+        <label for="word">one word at a time, please</label>
+        <input type="text" id="word" [(ngModel)]="item" name="item">
+        <button type="submit" class="btn">Add Word</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="word-container" *ngFor="let word of words">
+    <p class="word">{{ word.dictionary }}</p>
+    <button class="delete-button" (click)="deleteWord(word.Uid)">Delete</button>
+</div>
+
+
+
